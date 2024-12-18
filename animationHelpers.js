@@ -1,19 +1,11 @@
-/**
- * @fileoverview Animation helper functions
- * 
- * @author Dila Tosun
- * @id 22102100
- * 
- * @author Ahmet Kaan Sever
- * @id 22102278
- */
-
+vertexArray = [];
 // Saves the current theta and translation values of the current keyframe.
 function saveCurrKeyframe(){
     saveKeyframeButton.onclick = function () {
         console.log("Type of array element original: " + typeof(theta[0][0]));
         keyframes.thetaVals.push(JSON.parse(JSON.stringify(theta)));
         keyframes.translationVals.push([xTransVal, yTransVal, 0.0]);
+        keyframes.translationVals.add(vertexArray);
         console.log(keyframes);
         console.log("keyframes saved");
     }
@@ -81,9 +73,9 @@ function animate(duration = 1000) {
         [xTransVal, yTransVal, zTransVal] = interpolatedTranslation[currentStep];
 
         renderOnce();
-
+        vertexArray = getFrameData();
         currentStep++;
-
+        vertexArray 
         if (currentStep > steps) {
             currentFrame++;
             currentStep = 0;
